@@ -8,9 +8,20 @@ alt + F1
 	KeybindingsHelp
 	
 # Open Terminal (alacritty)
-super + Return
+super + m
 	OpenApps --terminal
-	
+
+super + Return
+	/opt/kitty/bin/kitty
+
+#rofi-themes
+super + d
+	/home/red/.config/rofi/launchers/type-6/launcher.sh 2>/dev/null
+
+#Screenshot
+
+super + shift + s
+	flameshot gui & sleep 60; kill $(ps aux | awk '/[f]lameshot/ {print $2}')
 # Open floating Terminal
 super + alt + Return
 	OpenApps --floating

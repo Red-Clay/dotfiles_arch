@@ -40,10 +40,15 @@ logo () {
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
 
-########## ---------- You must not run this as root ---------- ##########
+########## ---------- You must not run this as root and executed in $HOME ---------- ##########
 
 if [ "$(id -u)" = 0 ]; then
     echo "This script MUST NOT be run as root user."
+    exit 1
+fi
+
+if [ "$HOME" != $(pwd) ]; then
+    echo "This script MUST BE in $HOME"
     exit 1
 fi
 
@@ -66,7 +71,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
+dependencias=(flameshot wget tar p7zip unzip base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
 			  jq polkit-gnome git playerctl mpd \
 			  ncmpcpp geany ranger mpc picom xdotool \
@@ -109,11 +114,14 @@ clear
 ########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Downloading dotfiles"
-[ -d ~/dotfiles ] && rm -rf ~/dotfiles
+[ -d ~/dotfiles_arch || -d ~/dotfiles ] && rm -rf ~/dotfiles_arch ~/dotfiles
 printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n"
-cd
-git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+printf "Modified by RedClay"
+cd 
+#git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+git clone -b RedclayArch -depth=1 https://github.com/Red-Clay/dotfiles_arch.git
 sleep 2
+mv dotfiles_arch dotfiles 
 clear
 
 ########## ---------- Backup files ---------- ##########
@@ -292,3 +300,34 @@ else
   printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
   zsh
 fi
+########## ---------INSTALLING LAZY NVIM - NVCHAD ---------- ##########
+#NEOVIM
+printf "\nInstalling nvim to the user..."
+rm $HOME/.config/nvim/*
+git clone https://github.com/NvChad/NvChad $HOME/.config/nvim --depth 1
+
+sudo wget -P /opt/ https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+sudo tar -xf /opt/nvim-linux64.tar.gz -C /opt/
+sudo rm /opt/nvim-linux64.tar.gz
+/opt/nvim-linux64/bin/nvim
+# ROOT NVIM
+printf "\nInstalling nvim to the root..."
+sudo rm /root/.config/nvim/*
+sudo cp -r $HOME/.config/nvim /root/.config/nvim
+printf "\nYou need to copy the .zshrc file in the directory root"
+
+
+########## ---------Personalized ROFI ---------- ##########
+[ -d ~/rofi ] && rm -rf ~/rofi
+git clone --depth=1 https://github.com/adi1090x/rofi.git
+cd rofi
+chmod +x setup.sh
+./setup.sh
+printf "\nManually configure the style of type 6 in ~/.config/rofi/launchers/type-6/launcher.sh"
+
+
+########## ---------PowerLevel10K ---------- ##########
+printf "\nInstalling P10K..."
+cd $HOME
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+printf "\n Run zsh to personalise your zsh theme"
