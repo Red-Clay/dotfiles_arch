@@ -119,7 +119,7 @@ printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n"
 printf "Modified by RedClay"
 cd 
 #git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
-git clone -b RedclayArch -depth=1 https://github.com/Red-Clay/dotfiles_arch.git
+git clone -b RedclayArch --depth=1 https://github.com/Red-Clay/dotfiles_arch.git
 sleep 2
 mv dotfiles_arch dotfiles 
 clear
