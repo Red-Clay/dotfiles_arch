@@ -72,7 +72,7 @@ clear
 logo "Installing needed packages.."
 
 dependencias=(flameshot wget tar p7zip unzip base-devel rustup pacman-contrib bspwm polybar sxhkd \
-			  alacritty brightnessctl dunst rofi lsd bat \
+			  alacritty firefox brightnessctl dunst rofi lsd bat \
 			  jq polkit-gnome git playerctl mpd \
 			  ncmpcpp geany ranger mpc picom xdotool \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
