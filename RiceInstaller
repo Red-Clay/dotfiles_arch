@@ -72,7 +72,7 @@ clear
 logo "Installing needed packages.."
 
 dependencias=(flameshot wget tar p7zip unzip base-devel rustup pacman-contrib bspwm polybar sxhkd \
-			  alacritty brightnessctl dunst rofi lsd \
+			  alacritty brightnessctl dunst rofi lsd bat \
 			  jq polkit-gnome git playerctl mpd \
 			  ncmpcpp geany ranger mpc picom xdotool \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
@@ -296,14 +296,16 @@ printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is
 if [[ $SHELL != "/usr/bin/zsh" ]]; then
   echo "Changing shell to zsh, your root pass is needed."
   chsh -s /usr/bin/zsh
+  sudo cp $HOME/.zshrc /root/.zshrc
 else
   printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
+  sudo cp $HOME/.zshrc /root/.zshrc
   zsh
 fi
 ########## ---------INSTALLING LAZY NVIM - NVCHAD ---------- ##########
 #NEOVIM
 printf "\nInstalling nvim to the user..."
-rm $HOME/.config/nvim/*
+sudo rm -rf $HOME/.config/nvim/* $HOME/.config/nvim/.*
 git clone https://github.com/NvChad/NvChad $HOME/.config/nvim --depth 1
 
 sudo wget -P /opt/ https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
@@ -312,8 +314,8 @@ sudo rm /opt/nvim-linux64.tar.gz
 /opt/nvim-linux64/bin/nvim
 # ROOT NVIM
 printf "\nInstalling nvim to the root..."
-sudo rm /root/.config/nvim/*
-sudo cp -r $HOME/.config/nvim /root/.config/nvim
+sudo rm -rf /root/.config/nvim/* /root/.config/nvim/.*
+sudo git clone https://github.com/NvChad/NvChad /root/.config/nvim --depth 1
 printf "\nYou need to copy the .zshrc file in the directory root"
 
 
@@ -334,8 +336,12 @@ printf "\n Run zsh to personalise your zsh theme"
 
 ########## ---------Kitty---------- ##########
 
-cd /opt/kitty/
-wget https://github.com/kovidgoyal/kitty/releases/download/v0.29.0/kitty-0.29.0-x86_64.txz
-
-tar -xf kitty-0.29.0-x86_64.txz
+sudo cd /opt/kitty/
+sudo wget https://github.com/kovidgoyal/kitty/releases/download/v0.29.0/kitty-0.29.0-x86_64.txz
+sudo tar -xf kitty-0.29.0-x86_64.txz
 cd $HOME
+sudo chown -R $USER:root  /opt/kitty
+
+########## ---------Kitty---------- ##########
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
