@@ -331,3 +331,11 @@ printf "\nInstalling P10K..."
 cd $HOME
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 printf "\n Run zsh to personalise your zsh theme"
+
+########## ---------Kitty---------- ##########
+
+cd /opt/kitty/
+wget https://github.com/kovidgoyal/kitty/releases/download/v0.29.0/kitty-0.29.0-x86_64.txz
+
+tar -xf kitty-0.29.0-x86_64.txz
+cd $HOME
