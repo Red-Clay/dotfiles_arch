@@ -335,9 +335,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 printf "\n Run zsh to personalise your zsh theme"
 
 ########## ---------Kitty---------- ##########
-
-sudo cd /opt/kitty/
-sudo wget https://github.com/kovidgoyal/kitty/releases/download/v0.29.0/kitty-0.29.0-x86_64.txz
+sudo mkdir /opt/kitty
+sudo wget -P /opt/kitty https://github.com/kovidgoyal/kitty/releases/download/v0.29.0/kitty-0.29.0-x86_64.txz
 sudo tar -xf kitty-0.29.0-x86_64.txz
 cd $HOME
 sudo chown -R $USER:root  /opt/kitty
