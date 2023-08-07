@@ -71,9 +71,10 @@ clear
 
 logo "Installing needed packages.."
 
+
 dependencias=(flameshot wget tar p7zip unzip base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty firefox brightnessctl dunst rofi lsd bat \
-			  jq polkit-gnome git playerctl mpd \
+			  jq polkit-gnome git playerctl mpd xclip \
 			  ncmpcpp geany ranger mpc picom xdotool \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
@@ -265,7 +266,7 @@ fi
 
 if ! command -v eww >/dev/null 2>&1; then 
 	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	paru -S eww --skipreview --noconfirm
+	paru -S eww-x11 --skipreview --noconfirm
 	rm -rf {paru-bin,.cargo,.rustup}
 	rm -rf $HOME/.cache/paru/clone/eww
 else
