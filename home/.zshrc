@@ -125,10 +125,34 @@ alias vm-off="sudo systemctl stop libvirtd.service"
 
 alias musica="ncmpcpp"
 
-alias ls='lsd -a --group-directories-first'
-alias ll='lsd -la --group-directories-first'
+# ls
+
+alias ll='lsd -lh --group-dirs=first'
+
+alias la='lsd -a --group-dirs=first'
+
+alias l='lsd --group-dirs=first'
+
+alias lla='lsd -lha --group-dirs=first'
+
+alias ls='lsd --group-dirs=first'
+
+# bat
+
+alias cat='bat'
+
+alias catn='bat --style=plain'
+
+alias catnp='bat --style=plain --paging=never'
+
+alias icat='kitty +kitten icat' 
 
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
 $HOME/.local/bin/colorscript -r
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

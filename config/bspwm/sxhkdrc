@@ -10,8 +10,12 @@
 #|||----- Applications -----|||#
 
 # Open Terminal (alacritty)
-super + Return
+super + m
 	OpenApps --terminal
+
+# Open Terminal (alacritty)
+super + Return
+	/opt/kitty/bin/kitty
 
 # Open floating Terminal
 super + alt + Return
@@ -31,6 +35,12 @@ shift + alt + {b,g,n}
 shift + alt + {r,v,k}
 	OpenApps {--ranger,--nvim,--music}
 
+#rofi-themes
+super + d
+	~/.config/rofi/launchers/type-6/launcher.sh 2>/dev/null
+#Screenshot
+super + shift + s
+	flameshot gui & sleep 60; kill $(ps aux | awk '/[f]lameshot/ {print $2}')
 
 #|||----- System Keybindings -----|||#
 

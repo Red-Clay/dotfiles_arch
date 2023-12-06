@@ -73,7 +73,8 @@ dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo xorg-xrandr)
+			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo xorg-xrandr \
+        bat flameshot wget tar p7zip unzip)
 
 is_installed() {
   pacman -Qi "$1" &> /dev/null
@@ -108,7 +109,7 @@ clear
 
 logo "Downloading dotfiles"
 
-repo_url="https://github.com/gh0stzk/dotfiles"
+repo_url="https://github.com/Red-Clay/dotfiles_arch"
 repo_dir="$HOME/dotfiles"
 
 # Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
@@ -119,7 +120,7 @@ repo_dir="$HOME/dotfiles"
 
 # Clona el repositorio
 printf "Cloning dotfiles from %s\n" "$repo_url"
-git clone --depth=1 "$repo_url" "$repo_dir"
+git clone --depth=1 -b red_one  "$repo_url" "$repo_dir"
 
 sleep 2
 clear
@@ -328,8 +329,32 @@ logo "Changing default shell to zsh"
 		printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
 		# Cambia la shell a zsh
 		chsh -s /usr/bin/zsh
+    sudo cp $HOME/.zshrc /root/.zshrc
 		printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 	else
 		printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
 	fi
+
+########## --------- Installing Kitty ---------- ##########
+
+sudo mkdir /opt/kitty
+sudo cd /opt/kitty/
+sudo wget https://github.com/kovidgoyal/kitty/releases/download/v0.31.0/kitty-0.31.0-x86_64.txz
+sudo tar -xf kitty-0.31.0-x86_64.txz
+cd $HOME
+
+########## ---------PowerLevel10K ---------- ##########
+
+printf "\nInstalling P10K..."
+cd $HOME
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+printf "\n Run zsh to personalise your zsh theme"
+sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
+
+###--FINAL--##
 zsh
+
+
+
+
+
