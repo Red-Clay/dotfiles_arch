@@ -5,6 +5,8 @@
 #	Script to install my dotfiles
 #   Author: z0mbi3
 #	url: https://github.com/gh0stzk
+sudo pacman install firefox
+
 
 CRE=$(tput setaf 1)
 CYE=$(tput setaf 3)
@@ -338,15 +340,13 @@ logo "Changing default shell to zsh"
 ########## --------- Installing Kitty ---------- ##########
 
 sudo mkdir /opt/kitty
-sudo cd /opt/kitty/
-sudo wget https://github.com/kovidgoyal/kitty/releases/download/v0.31.0/kitty-0.31.0-x86_64.txz
-sudo tar -xf kitty-0.31.0-x86_64.txz
-cd $HOME
+sudo wget -P /opt/kitty/ https://github.com/kovidgoyal/kitty/releases/download/v0.31.0/kitty-0.31.0-x86_64.txz
+sudo tar -xf kitty-0.31.0-x86_64.txz /opt/kitty
+
 
 ########## ---------PowerLevel10K ---------- ##########
 
 printf "\nInstalling P10K..."
-cd $HOME
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 printf "\n Run zsh to personalise your zsh theme"
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
