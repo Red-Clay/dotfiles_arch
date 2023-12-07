@@ -10,10 +10,10 @@
 #|||----- Applications -----|||#
 
 # Open Terminal (alacritty)
-super + m
+super + g
 	OpenApps --terminal
 
-# Open Terminal (alacritty)
+# Open Terminal (kitty)
 super + Return
 	/opt/kitty/bin/kitty
 
