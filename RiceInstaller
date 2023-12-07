@@ -341,7 +341,7 @@ logo "Changing default shell to zsh"
 
 sudo mkdir /opt/kitty
 sudo wget -P /opt/kitty/ https://github.com/kovidgoyal/kitty/releases/download/v0.31.0/kitty-0.31.0-x86_64.txz
-sudo tar -xf kitty-0.31.0-x86_64.txz /opt/kitty
+sudo tar -xf /opt/kitty/kitty-0.31.0-x86_64.txz /opt/kitty
 
 
 ########## ---------PowerLevel10K ---------- ##########
