@@ -10,6 +10,8 @@ export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
@@ -152,7 +154,12 @@ alias icat='kitty +kitten icat'
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
 $HOME/.local/bin/colorscript -r
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
+if [ "$(id -u)" = 0 ]; then
+    source /home/red/powerlevel10k/powerlevel10k.zsh-theme
+else   
+    source ~/powerlevel10k/powerlevel10k.zsh-theme
+fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f /home/red/.p10k.zsh ]] || source /home/red/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
