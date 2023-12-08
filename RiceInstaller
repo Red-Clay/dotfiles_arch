@@ -352,6 +352,10 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 printf "\n Run zsh to personalise your zsh theme"
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
 
+########## --------- fzf ---------- ##########
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+$HOME/.fzf/install
+
 ###--FINAL--##
 zsh
 
