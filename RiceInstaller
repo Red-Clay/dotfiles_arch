@@ -358,6 +358,10 @@ sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powe
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 $HOME/.fzf/install
 
+
+mkdir ~/.config/nvim
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+
 ###--FINAL--##
 zsh
 
