@@ -362,6 +362,9 @@ $HOME/.fzf/install
 mkdir ~/.config/nvim
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
+sudo wget -P /opt https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+sudo tar -xf /opt/nvim-linux64.tar.gz --directory /opt/
+
 ###--FINAL--##
 zsh
 

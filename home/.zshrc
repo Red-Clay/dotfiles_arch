@@ -14,7 +14,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 
 if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
+  then PATH="/opt/nvim-linux64/bin:$HOME/.local/bin:$PATH"
 fi
 
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
