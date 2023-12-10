@@ -7,7 +7,7 @@
 #   └┘ ┴ ┴┴└─└─┘
 export VISUAL="${EDITOR}"
 export EDITOR='nvim'
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -87,9 +87,6 @@ PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_in
 #  ┌─┐┬  ┬ ┬┌─┐┬┌┐┌┌─┐
 #  ├─┘│  │ ││ ┬││││└─┐
 #  ┴  ┴─┘└─┘└─┘┴┘└┘└─┘
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -158,17 +155,14 @@ alias icat='kitty +kitten icat'
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
-$HOME/.local/bin/colorscript -r
 
-# if [ "$(id -u)" = 0 ]; then
-#     source /home/red/powerlevel10k/powerlevel10k.zsh-theme
-# else   
-#     source ~/powerlevel10k/powerlevel10k.zsh-theme
-# fi
+if [ "$(id -u)" = 0 ]; then
+     source /home/red/powerlevel10k/powerlevel10k.zsh-theme
+else   
+     source ~/powerlevel10k/powerlevel10k.zsh-theme
+fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
-print 'going to source ~/.p10k.zsh; press enter to continue'
-read
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
